@@ -18,9 +18,12 @@ import android.view.View;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 
+import java.io.Serializable;
+import java.util.HashMap;
+import java.util.Map;
+
 import app.simone.shared.application.App;
 import app.simone.shared.utils.Constants;
-import app.simone.singleplayer.view.GameActivity;
 
 /**
  * @author Michele Sapignoli
@@ -192,21 +195,31 @@ public abstract class FullscreenBaseGameActivity extends AppCompatActivity imple
         mHideHandler.postDelayed(mShowPart2Runnable, UI_ANIMATION_DELAY);
     }
 
-    public void openActivity(Class activity, int enterAnim, int exitAnim) {
-        Intent intent = new Intent(this, activity);
-        startActivity(intent);
-        overridePendingTransition(enterAnim, exitAnim);
-    }
-
     @Override
     public void onBackPressed() {
         super.onBackPressed();
         backTransition();
     }
 
+    public void openActivity(Class activity, int enterAnim, int exitAnim) {
+        openActivity(activity, null, enterAnim, exitAnim);
+    }
+
     public void openActivity(Class activity, String extraName, int extra, int enterAnim, int exitAnim) {
+        Map<String,Serializable> map = new HashMap<>();
+        map.put(extraName, extra);
+        openActivity(activity, map, enterAnim, exitAnim);
+    }
+
+    public void openActivity(Class activity, Map<String,Serializable> extras, int enterAnim, int exitAnim) {
         Intent intent = new Intent(this, activity);
-        intent.putExtra(extraName, extra);
+
+        if(extras != null) {
+            for(String key : extras.keySet()){
+                intent.putExtra(key, extras.get(key));
+            }
+        }
+
         startActivity(intent);
         overridePendingTransition(enterAnim, exitAnim);
     }

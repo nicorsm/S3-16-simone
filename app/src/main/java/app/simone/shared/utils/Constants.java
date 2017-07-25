@@ -19,6 +19,7 @@ public class Constants {
     public static final String TURN_PLAYER = "Your\nturn";
     public static final int WHATTASHAMEYOULOST_MSG = -10;
     public static final String PLAY_AGAIN = "Play\nagain";
+    public static final String COLOR_EXTRA = "color";
     public static final int STD_DELAY_BTN_TIME = 300;
     public static final String LEADERBOARD_CLASSIC_ID = "CgkI6ZOU44EQEAIQAg";
     public static final String LEADERBOARD_HARD_ID = "CgkI6ZOU44EQEAIQAw";

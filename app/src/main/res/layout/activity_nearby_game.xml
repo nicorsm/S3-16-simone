@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="app.simone.multiplayer.view.NearbyGameActivity">
+
+    <FrameLayout
+        android:id="@+id/nearby_fullscreen_content"
+        android:orientation="vertical"
+        android:background="@color/white"
+        android:layout_height="match_parent"
+        android:layout_width="match_parent">
+
+        <Button
+            android:id="@+id/nearby_button"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white"
+            android:textColor="@color/myMainTextColor" />
+
+        <app.simone.shared.styleable.SimoneTextView
+            android:id="@+id/nearby_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:elevation="6dp"
+            android:text="You lose!"
+            android:layout_margin="8dp"
+            android:textAlignment="center"
+            android:textColor="@color/myDarkGray"
+            android:textSize="32sp"
+            app:layout_anchor="@id/nearby_fullscreen_content"
+            app:layout_anchorGravity="center" />
+
+        </FrameLayout>
+</android.support.constraint.ConstraintLayout>

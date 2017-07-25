@@ -2,7 +2,6 @@ package app.simone.shared.main;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
 import android.os.Message;
 import android.support.design.widget.FloatingActionButton;
 import android.view.View;
@@ -10,21 +9,21 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.TextView;
+
 import com.crashlytics.android.Crashlytics;
 
 import app.simone.R;
-import app.simone.scores.view.LoginActivity;
-import app.simone.scores.view.ScoreboardActivity;
-import app.simone.settings.view.SettingsActivity;
-import app.simone.shared.application.App;
-import app.simone.shared.utils.Constants;
-import app.simone.singleplayer.view.VSCpuBaseGameActivity;
-import app.simone.shared.utils.AudioManager;
+import app.simone.multiplayer.view.MultiplayerTypeActivity;
 import app.simone.multiplayer.controller.DataManager;
 import app.simone.multiplayer.view.FacebookLoginActivity;
 import app.simone.scores.google.GoogleGamesActivity;
+import app.simone.scores.view.LoginActivity;
+import app.simone.scores.view.ScoreboardActivity;
+import app.simone.settings.view.SettingsActivity;
+import app.simone.shared.utils.AudioManager;
+import app.simone.shared.utils.Constants;
+import app.simone.singleplayer.view.VSCpuBaseGameActivity;
 import io.fabric.sdk.android.Fabric;
-import scala.collection.immutable.Stream;
 
 /**
  * @author Michele Sapignoli
@@ -40,8 +39,6 @@ public class MainActivity extends FullscreenBaseGameActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-
 
         Fabric.with(this, new Crashlytics());
 
@@ -86,7 +83,8 @@ public class MainActivity extends FullscreenBaseGameActivity {
         multiplayerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                openActivity(FacebookLoginActivity.class, R.anim.left_in, R.anim.right_out);
+                openActivity(MultiplayerTypeActivity.class,  R.anim.slide_down,R.anim.slide_down_existing);
+                //openActivity(FacebookLoginActivity.class, R.anim.zoom_in, R.anim.zoom_out);
             }
         });
 
@@ -132,7 +130,6 @@ public class MainActivity extends FullscreenBaseGameActivity {
         m.obj = this;
         googleHandler.sendMessageDelayed(m,100);
     }
-
 
     @Override
     protected void backTransition() {

@@ -172,7 +172,7 @@ public class GameActivity extends FullscreenBaseGameActivity implements IGameAct
         FacebookUser recipient = (FacebookUser) getIntent().getExtras().getSerializable("recipient");
 
         //Giaki
-        if (getIntent().getExtras().get("player") != null && !getIntent().hasExtra("multiplayerMode")) {
+        if (getIntent().getExtras().get("sender") != null && !getIntent().hasExtra("multiplayerMode")) {
             // This code is executed by P1
             whichPlayer = "p1";
             isMultiplayerMode = true;
